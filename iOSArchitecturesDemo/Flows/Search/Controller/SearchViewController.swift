@@ -119,8 +119,8 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let app = searchResults[indexPath.row]
-        let appDetaillViewController = AppDetailViewController()
+        var app = searchResults[indexPath.row]
+        let appDetaillViewController = AppDetailViewController(app: app)
         appDetaillViewController.app = app
         navigationController?.pushViewController(appDetaillViewController, animated: true)
     }
