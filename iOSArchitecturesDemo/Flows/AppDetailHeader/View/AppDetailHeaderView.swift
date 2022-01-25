@@ -54,15 +54,7 @@ final class AppDetailHeaderView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         return label
     }()
-    
-    private(set) lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .systemGray
-        label.font = UIFont.boldSystemFont(ofSize: 14.0)
-        label.numberOfLines = 15
-        return label
-    }()
+
     
     // MARK: - Init
     
@@ -84,8 +76,7 @@ final class AppDetailHeaderView: UIView {
         self.addSubview(self.subtitleLabel)
         self.addSubview(self.openButton)
         self.addSubview(self.ratingLabel)
-        
-        self.addSubview(self.descriptionLabel)
+
         
         NSLayoutConstraint.activate([
             self.imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12.0),
@@ -111,13 +102,6 @@ final class AppDetailHeaderView: UIView {
             self.ratingLabel.widthAnchor.constraint(equalToConstant: 100.0),
             
             self.ratingLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            
-            
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.ratingLabel.bottomAnchor, constant: 10.0),
-            self.descriptionLabel.leftAnchor.constraint(equalTo: self.ratingLabel.leftAnchor),
-            self.descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5.0)
-            
             ])
     }
 }

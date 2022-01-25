@@ -13,6 +13,7 @@ final class AppDetailViewController: UIViewController {
     var app: ITunesApp
     
     lazy var headerViewController = AppDetailHeaderViewController(app: self.app)
+    lazy var descroptionView = DescriptionViewContrioller(app: self.app)
     lazy var whatsNewController = WhatsNewViewController(app: self.app)
     
     init(app: ITunesApp) {
@@ -53,14 +54,11 @@ final class AppDetailViewController: UIViewController {
     
     private func addDescriptionViewController() {
         // TODO: ДЗ, сделать другие сабмодули
-        let descriptionViewController = UIViewController()
+        let descriptionViewController = self.descroptionView
         
         self.addChild(descriptionViewController)
         self.view.addSubview(descriptionViewController.view)
         descriptionViewController.didMove(toParent: self)
-        
-        //descriptionViewController.view.backgroundColor = .cyan
-        
         descriptionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             descriptionViewController.view.topAnchor.constraint(equalTo: self.headerViewController.view.bottomAnchor),
@@ -71,17 +69,18 @@ final class AppDetailViewController: UIViewController {
     }
     
     private func addWhatsNewViewController() {
-        let whatsNewcontroller = UIViewController()
+        let whatsNewcontroller = self.whatsNewController
         self.addChild(whatsNewcontroller)
         self.view.addSubview(whatsNewcontroller.view)
-        whatsNewcontroller.didMove(toParent: self)
+        whatsNewcontroller.didMove(toParent: descroptionView)
+        whatsNewcontroller.view.backgroundColor = .cyan
         whatsNewcontroller.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         
-            whatsNewcontroller.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            whatsNewcontroller.view.topAnchor.constraint(equalTo: self.descroptionView.view.bottomAnchor),
             whatsNewcontroller.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             whatsNewcontroller.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            whatsNewcontroller.view.heightAnchor.constraint(equalToConstant: 250.0)
+            whatsNewcontroller.view.heightAnchor.constraint(equalToConstant: 50.0)
         
         ])
     }
