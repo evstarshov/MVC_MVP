@@ -44,5 +44,6 @@ final class WhatsNewViewController: UIViewController {
     
     private func fillData() {
         self.whatsNewView.whatsNewLabel.text = "Что нового..."
+        self.whatsNewView.averageNewVersionRatingLabel.text = app.appUrl
     }
 }

@@ -21,6 +21,15 @@ final class WhatsNewView: UIView {
         return label
     }()
     
+    private(set) lazy var averageNewVersionRatingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemGray
+        label.font = UIFont.boldSystemFont(ofSize: 12.0)
+        label.numberOfLines = 2
+        return label
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -37,12 +46,18 @@ final class WhatsNewView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.whatsNewLabel)
+        self.addSubview(self.averageNewVersionRatingLabel)
         
         NSLayoutConstraint.activate([
         
             self.whatsNewLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12.0),
             self.whatsNewLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16.0),
-            self.whatsNewLabel.widthAnchor.constraint(equalToConstant: 120.0)
+            self.whatsNewLabel.widthAnchor.constraint(equalToConstant: 150.0),
+            
+            self.averageNewVersionRatingLabel.topAnchor.constraint(equalTo: self.whatsNewLabel.bottomAnchor, constant: 10.0),
+            self.averageNewVersionRatingLabel.leftAnchor.constraint(equalTo: self.whatsNewLabel.leftAnchor),
+            self.averageNewVersionRatingLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
+            self.averageNewVersionRatingLabel.widthAnchor.constraint(equalToConstant: 150.0)
         
         
         ])

@@ -73,14 +73,13 @@ final class AppDetailViewController: UIViewController {
         self.addChild(whatsNewcontroller)
         self.view.addSubview(whatsNewcontroller.view)
         whatsNewcontroller.didMove(toParent: descroptionView)
-        whatsNewcontroller.view.backgroundColor = .cyan
         whatsNewcontroller.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         
             whatsNewcontroller.view.topAnchor.constraint(equalTo: self.descroptionView.view.bottomAnchor),
             whatsNewcontroller.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             whatsNewcontroller.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            whatsNewcontroller.view.heightAnchor.constraint(equalToConstant: 50.0)
+            whatsNewcontroller.view.heightAnchor.constraint(equalToConstant: 150.0)
         
         ])
     }
