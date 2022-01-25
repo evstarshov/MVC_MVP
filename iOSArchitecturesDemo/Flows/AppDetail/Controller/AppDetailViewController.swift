@@ -48,3 +48,5 @@ final class AppDetailViewController: UIViewController {
         }
     }
 }
+
+
