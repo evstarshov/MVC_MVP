@@ -52,6 +52,7 @@ final class SongDetailHeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .lightGray
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.numberOfLines = 2
         return label
     }()
 
@@ -99,7 +100,7 @@ final class SongDetailHeaderView: UIView {
             
             self.ratingLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 24.0),
             self.ratingLabel.leftAnchor.constraint(equalTo: self.imageView.leftAnchor),
-            self.ratingLabel.widthAnchor.constraint(equalToConstant: 100.0),
+            self.ratingLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
             
             self.ratingLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             ])
