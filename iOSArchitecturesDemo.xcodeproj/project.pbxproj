@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A91AF3027A15A7000C7FB5A /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91AF2F27A15A7000C7FB5A /* SearchPresenter.swift */; };
+		3A91AF3327A1622B00C7FB5A /* SearchViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91AF3227A1622B00C7FB5A /* SearchViewInterface.swift */; };
+		3A91AF3527A162A100C7FB5A /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91AF3427A162A100C7FB5A /* SearchBuilder.swift */; };
 		3ABB658927A038B0003D6974 /* AppDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB658827A038B0003D6974 /* AppDetailHeaderView.swift */; };
 		3ABB658B27A038D4003D6974 /* AppDetailHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB658A27A038D4003D6974 /* AppDetailHeaderViewController.swift */; };
 		3ABB659927A05523003D6974 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB659827A05523003D6974 /* WhatsNewView.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A91AF2F27A15A7000C7FB5A /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		3A91AF3227A1622B00C7FB5A /* SearchViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInterface.swift; sourceTree = "<group>"; };
+		3A91AF3427A162A100C7FB5A /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
 		3ABB658827A038B0003D6974 /* AppDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderView.swift; sourceTree = "<group>"; };
 		3ABB658A27A038D4003D6974 /* AppDetailHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderViewController.swift; sourceTree = "<group>"; };
 		3ABB659827A05523003D6974 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
@@ -80,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A91AF3127A1609600C7FB5A /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				3A91AF3427A162A100C7FB5A /* SearchBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		3ABB658527A03850003D6974 /* AppDetailHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +169,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3ABB65A327A159B9003D6974 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3A91AF2F27A15A7000C7FB5A /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		3E03DA2743EDF39A6844C510 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +238,8 @@
 		E0E1D2A62034A36C0011E01A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				3A91AF3127A1609600C7FB5A /* Builder */,
+				3ABB65A327A159B9003D6974 /* Presenter */,
 				F8A97B3622498F0C00FB2C0E /* View */,
 				F8114FBF22A3E5D500102830 /* Controller */,
 			);
@@ -296,6 +320,7 @@
 			children = (
 				E0E1D2942034A3350011E01A /* SearchViewController.swift */,
 				F8114FC022A3E5EE00102830 /* AppCellModel.swift */,
+				3A91AF3227A1622B00C7FB5A /* SearchViewInterface.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -493,12 +518,15 @@
 				F8A1E03C2248382F00FE6448 /* Monads.swift in Sources */,
 				3ABB658B27A038D4003D6974 /* AppDetailHeaderViewController.swift in Sources */,
 				3ABB65A027A061DB003D6974 /* DescriptionView.swift in Sources */,
+				3A91AF3327A1622B00C7FB5A /* SearchViewInterface.swift in Sources */,
 				E0E1D3D4203C4AA50011E01A /* UIColor+Extensions.swift in Sources */,
 				3ABB658927A038B0003D6974 /* AppDetailHeaderView.swift in Sources */,
 				E0E1D3D1203C48D70011E01A /* AppDetailViewController.swift in Sources */,
 				3ABB659B27A05535003D6974 /* WhatsNewViewController.swift in Sources */,
+				3A91AF3527A162A100C7FB5A /* SearchBuilder.swift in Sources */,
 				E0E1D358203ADC590011E01A /* NetworkManager.swift in Sources */,
 				E0E1D39C203AE6420011E01A /* ITunesSong.swift in Sources */,
+				3A91AF3027A15A7000C7FB5A /* SearchPresenter.swift in Sources */,
 				E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */,
 				E0E1D39F203AE7400011E01A /* ImageDownloader.swift in Sources */,
 				F8114FBE22A3DBF400102830 /* SearchView.swift in Sources */,
