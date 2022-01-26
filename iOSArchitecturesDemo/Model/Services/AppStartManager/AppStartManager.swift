@@ -20,8 +20,11 @@ final class AppStartManager {
         let rootVC = SearchModuleBuilder.build()
         rootVC.navigationItem.title = "Search via iTunes"
         
+        let songVC = SongSearchModuleBuilder.build()
+        songVC.navigationItem.title = "Search Songs"
+        
         let navVC = self.configuredNavigationController
-        navVC.viewControllers = [rootVC]
+        navVC.viewControllers = [rootVC, songVC]
         
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()

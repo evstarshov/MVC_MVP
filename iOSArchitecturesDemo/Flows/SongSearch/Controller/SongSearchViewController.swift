@@ -1,19 +1,19 @@
 //
-//  ViewController.swift
+//  SongSearchViewController.swift
 //  iOSArchitecturesDemo
 //
-//  Created by ekireev on 14.02.2018.
-//  Copyright © 2018 ekireev. All rights reserved.
+//  Created by Евгений Старшов on 26.01.2022.
+//  Copyright © 2022 ekireev. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SongSearchViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let presenter: SearchViewOutput
-    init(presenter: SearchViewOutput) {
+    private let presenter: SongSearchViewOutput
+    init(presenter: SongSearchViewOutput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,16 +22,16 @@ final class SearchViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var searchView: SearchView {
-        return self.view as! SearchView
+    private var songSearchView: SongSearchView {
+        return self.view as! SongSearchView
     }
     
     private let searchService = ITunesSearchService()
-    var searchResults = [ITunesApp]() {
+    var searchResults = [ITunesSong]() {
         didSet {
-            self.searchView.tableView.isHidden = false
-            self.searchView.tableView.reloadData()
-            self.searchView.searchBar.resignFirstResponder()
+            self.songSearchView.tableView.isHidden = false
+            self.songSearchView.tableView.reloadData()
+            self.songSearchView.searchBar.resignFirstResponder()
         }
     }
     
@@ -43,16 +43,16 @@ final class SearchViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view = SearchView()
+        self.view = SongSearchView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.searchView.searchBar.delegate = self
-        self.searchView.tableView.register(AppCell.self, forCellReuseIdentifier: Constants.reuseIdentifier)
-        self.searchView.tableView.delegate = self
-        self.searchView.tableView.dataSource = self
+        self.songSearchView.searchBar.delegate = self
+        self.songSearchView.tableView.register(SongCell.self, forCellReuseIdentifier: Constants.reuseIdentifier)
+        self.songSearchView.tableView.delegate = self
+        self.songSearchView.tableView.dataSource = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,7 +62,7 @@ final class SearchViewController: UIViewController {
     
 }
 //MARK: - UITableViewDataSource
-extension SearchViewController: UITableViewDataSource {
+extension SongSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -70,18 +70,18 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: Constants.reuseIdentifier, for: indexPath)
-        guard let cell = dequeuedCell as? AppCell else {
+        guard let cell = dequeuedCell as? SongCell else {
             return dequeuedCell
         }
-        let app = self.searchResults[indexPath.row]
-        let cellModel = AppCellModelFactory.cellModel(from: app)
+        let song = self.searchResults[indexPath.row]
+        let cellModel = SongCellModelFactory.cellModel(from: song)
         cell.configure(with: cellModel)
         return cell
     }
 }
 
 //MARK: - UITableViewDelegate
-extension SearchViewController: UITableViewDelegate {
+extension SongSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -91,7 +91,7 @@ extension SearchViewController: UITableViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension SearchViewController: UISearchBarDelegate {
+extension SongSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text else {
@@ -107,7 +107,7 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 // MARK: - Input
-extension SearchViewController: SearchViewInput {
+extension SongSearchViewController: SongSearchViewInput {
     
     func showError(error: Error) {
         let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
@@ -117,18 +117,16 @@ extension SearchViewController: SearchViewInput {
     }
     
     func showNoResults() {
-        self.searchView.emptyResultView.isHidden = false
+        self.songSearchView.emptyResultView.isHidden = false
         self.searchResults = []
-        self.searchView.tableView.reloadData()
+        self.songSearchView.tableView.reloadData()
     }
     
     func hideNoResults() {
-        self.searchView.emptyResultView.isHidden = true
+        self.songSearchView.emptyResultView.isHidden = true
     }
     
     func throbber(show: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = show
     }
 }
-
-
